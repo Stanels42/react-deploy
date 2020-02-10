@@ -61,7 +61,7 @@ class App extends Component {
   //Adds the values from the form to the app state
   addAlbum (formInfo) {
     superagent.post(this.api)
-    .auth('stanley', 'Stan3ls42')
+    .auth('guest', 'guestaccount')
     .send({name:formInfo.name, artist:formInfo.artist, track_count:1, user:1})
     .then(res => {
       console.log('Sent New Album')
@@ -83,7 +83,7 @@ class App extends Component {
     })
 
     superagent.put(this.api + album.pk + '/')
-    .auth('stanley', 'Stan3ls42')
+    .auth('guest', 'guestaccount')
     .type('form')
     // .set('Content-Type', 'application/json')
     .field({
@@ -109,7 +109,7 @@ class App extends Component {
     })
 
     superagent.del(this.api+album.pk)
-    .auth('stanley', 'Stan3ls42')
+    .auth('guest', 'guestaccount')
     .send({pk:album.pk})
     .then(() => {
       this.loadData()
